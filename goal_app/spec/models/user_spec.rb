@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 RSpec.describe User, type: :model do
   subject(:user) do
-    FactoryBot.build(:user, username: 'eric', password: 'password')
+    FactoryBot.create(:user, username: 'eric', password: 'password')
   end
   it 'creates a session token before validation' do
     user.valid?
@@ -20,6 +20,7 @@ RSpec.describe User, type: :model do
       expect(BCrypt::Password).to receive(:create).with('password')
       User.new(username: 'louis', password: 'password')
     end
+    User.destroy_all
   end
 
   # describe 'associations' do
@@ -27,15 +28,19 @@ RSpec.describe User, type: :model do
   # end
   
   describe 'User::find_by_credentials' do
-    eric = FactoryBot.create(:user, username: 'eric', password: 'password')
+    eric = User.create(  username: 'eric', password: 'password')
     it 'finds the user by username' do
-      user = User.find_by(username: 'eric', password: 'password')
+      user = User.find_by_credentials('eric', 'password')
       expect(user).to_not be_nil
     end
+
     it 'returns nil if user not found' do
-      user = User.find_by(username: 'Carly', password: 'whatever')
+      user = User.find_by_credentials( 'Carly', 'whatever')
       expect(user).to be_nil
     end
+
   end
-  # eric.destoy
+  User.destroy_all
+
+  
 end

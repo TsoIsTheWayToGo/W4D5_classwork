@@ -1,0 +1,16 @@
+current directory: /Users/appacademy/Desktop/W4D5/goal_app/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/usr/local/var/rbenv/versions/2.5.0/bin/ruby -I /usr/local/var/rbenv/versions/2.5.0/lib/ruby/site_ruby/2.5.0 -r ./siteconf20190201-80853-nz1abx.rb extconf.rb
+
+current directory: /Users/appacademy/Desktop/W4D5/goal_app/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/appacademy/Desktop/W4D5/goal_app/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/appacademy/Desktop/W4D5/goal_app/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

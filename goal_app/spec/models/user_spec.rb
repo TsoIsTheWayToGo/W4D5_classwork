@@ -37,5 +37,5 @@ RSpec.describe User, type: :model do
       expect(user).to be_nil
     end
   end
-  eric.destoy
+  # eric.destoy
 end

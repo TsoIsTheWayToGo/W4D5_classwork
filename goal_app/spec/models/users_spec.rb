@@ -1,5 +1,7 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'shoulda-matchers'
+
 RSpec.describe User, type: :model do
   subject(:user) do
     FactoryBot.create(:user, username: 'eric', password: 'password')
@@ -7,13 +9,14 @@ RSpec.describe User, type: :model do
   it 'creates a session token before validation' do
     user.valid?
     expect(user.session_token).to_not be_nil
-  end  
-  describe 'validations' do
-    it {should validate_presence_of(:username)}
+  end
+  
+    it { should validate_presence_of(:username) }
+    # debugger
     it {should validate_uniqueness_of(:username)}
     it {should validate_presence_of(:password_digest)}
     it {should validate_length_of(:password).is_at_least(6)}
-  end
+
   
   describe 'password setter' do
     it 'encrypts the password using BCrypt' do
@@ -28,8 +31,8 @@ RSpec.describe User, type: :model do
   # end
   
   describe 'User::find_by_credentials' do
-    eric = User.create(  username: 'eric', password: 'password')
     it 'finds the user by username' do
+      eric = User.create(  username: 'eric', password: 'password')
       user = User.find_by_credentials('eric', 'password')
       expect(user).to_not be_nil
     end
@@ -44,3 +47,4 @@ RSpec.describe User, type: :model do
 
   
 end
+
